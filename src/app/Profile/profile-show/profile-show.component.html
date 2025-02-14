@@ -1,0 +1,25 @@
+<div class="card" style="width: 38rem;">
+  <div class="card-body">
+    <h5 class="card-title">
+       View Profile
+    </h5>
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" >
+      <div class="mb-3">
+        <label for="title" class="form-label">Name</label>
+        <input type="text" class="form-control" id="title" formControlName="name" [readonly]="true">
+      </div>
+
+      <div class="mb-3">
+        <label for="title" class="form-label">Email</label>
+        <input type="text" class="form-control" id="title" formControlName="email" [readonly]="true">
+      </div>
+
+      <div class="mb-3">
+        <label for="title" class="form-label">Password</label>
+        <input type="text" class="form-control" id="title" formControlName="password" [readonly]="true">
+      </div>
+
+      <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+      </form>
+  </div>
+</div>
