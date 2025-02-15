@@ -1,12 +1,18 @@
 {
   "name": "task-frontend",
   "version": "0.0.0",
+  "main": "main.js",
+  "author": "Sahil",
+  "description": "This project was generated with Angular CLI version 19.1.6.",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "serve:ssr:soca14": "node dist/soca14/server/main.js",
+    "electron": "ng build --base-href ./ && electron .",
+    "dist": "ng build --base-href ./ && electron-builder"
   },
   "private": true,
   "dependencies": {
@@ -31,6 +37,8 @@
     "@angular/compiler-cli": "^19.1.0",
     "@angular/localize": "^19.1.0",
     "@types/jasmine": "~5.1.0",
+    "electron": "^34.2.0",
+    "electron-builder": "^25.1.8",
     "jasmine-core": "~5.5.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
@@ -38,5 +46,16 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "typescript": "~5.7.2"
+  },
+  "build": {
+    "appId": "com.sahil.task",
+    "productName": "Task",
+    "mac": {
+      "category": "public.app-category.developer-tools"
+    },
+    "files": [
+      "**/*",
+      "dist/soca14/browser/*"
+    ]
   }
 }
