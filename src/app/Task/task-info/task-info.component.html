@@ -1,7 +1,16 @@
-<div class="card" style="width: 18rem;">
+<div class="card" style="width: 58rem" style="margin: 10px">
   <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <h5 class="card-title">{{ task.title }}</h5>
+    <p class="card-text">
+      {{ task.description }}
+    </p>
+    <div class="d-flex flex-row-reverse bd-highlight">
+      <div class="p-2 bd-highlight btn-sm">
+        <a (click)="delete()" class="btn btn-danger btn-sm"> Delete </a>
+      </div>
+      <div class="p-2 bd-highlight">
+        <a class="btn btn-info btn-sm" (click)="taskInfo()"> task info </a>
+      </div>
+    </div>
   </div>
 </div>

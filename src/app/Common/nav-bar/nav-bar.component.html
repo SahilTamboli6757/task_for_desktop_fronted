@@ -21,14 +21,15 @@
             <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
               <a routerLink="/profile" ngbDropdownItem>View Profile</a>
               <a routerLink="/profile/update" ngbDropdownItem >Update Profile</a>
+              <a (click)="logout()" ngbDropdownItem >Logout</a>
             </div>
           </div>
         </li>
       </ul>
-      <form class="d-flex" role="search">
+      <!-- <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      </form> -->
     </div>
   </div>
 </nav>

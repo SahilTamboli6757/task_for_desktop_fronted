@@ -23,7 +23,7 @@ export const routes: Routes = [
   },
   { path: 'task/:id', component: TaskShowComponent, canActivate: [authGuard] },
   {
-    path: 'task/edit/:id',
+    path: 'task/:id/edit',
     component: TaskEditComponent,
     canActivate: [authGuard],
   },
