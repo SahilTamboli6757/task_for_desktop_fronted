@@ -14,10 +14,18 @@ export class ApiService {
     return localStorage.getItem('token');
   }
 
-  headers = new HttpHeaders({
-    Authorization: `Bearer ${this.authenTicated}`,
-    'Content-Type': 'application/json',
-  });
+  // headers = new HttpHeaders({
+  //   Authorization: `Bearer ${this.authenTicated}`,
+  //   'Content-Type': 'application/json',
+  // });
+
+  get headers() {
+    const token = localStorage.getItem('token');
+    return new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    });
+  }
 
   constructor(private httpClient: HttpClient, private router: Router) {}
 
