@@ -24,7 +24,7 @@ export class ProfileShowComponent implements OnInit {
 
   viewProfile() {
     this.profileService.getProfile().subscribe((response: any) => {
-      console.log(response);
+      // console.log(response);
       this.profileForm.patchValue(response.user);
     });
   }

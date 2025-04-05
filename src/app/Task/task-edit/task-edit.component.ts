@@ -46,7 +46,7 @@ export class TaskEditComponent implements OnInit {
       .subscribe((data) => {
         this.router.navigate(['/']);
       });
-    console.log(this.ediTTtaskForm.value);
+    // console.log(this.ediTTtaskForm.value);
   }
 
   initForm() {

@@ -25,7 +25,7 @@ export class ProfileUpdateComponent implements OnInit {
 
   getProfile() {
     this.profieService.getProfile().subscribe((response: any) => {
-      console.log(response);
+      // console.log(response);
       this.profileForm.patchValue(response.user);
     });
   }
@@ -34,7 +34,7 @@ export class ProfileUpdateComponent implements OnInit {
     this.profieService
       .updateProfile(this.profileForm.value)
       .subscribe((response: any) => {
-        console.log(response);
+        // console.log(response);
         this.router.navigate(['/profile']);
       });
   }

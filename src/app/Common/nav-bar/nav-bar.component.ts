@@ -18,13 +18,13 @@ export class NavBarComponent {
 
       next: (data) => {
 
-        localStorage.removeItem('token');
+        localStorage.clear();
 
         this.router.navigate(['/login']);
 
       },
       error: (error) => {
-        console.log(error);
+        // console.log(error);
       },
     });
   }
