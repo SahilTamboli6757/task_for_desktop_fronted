@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
 
     localStorage.clear();
 
-    window.Storage.prototype.clear();
+    // window.Storage.prototype.clear();
 
     this.authService.login(this.loginForm.value).subscribe({
       next: (data) => {
