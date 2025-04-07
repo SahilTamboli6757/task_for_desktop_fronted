@@ -1,4 +1,5 @@
-<div class="container">
+<div class="container" *ngIf="transalteData">
+  <app-translate (langChanged)="langUpdated()"/>
   <section class="vh-100">
     <div class="container-fluid h-custom">
       <div class="row d-flex justify-content-center align-items-center h-100">
@@ -11,33 +12,35 @@
 
             <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start mb-5">
               <p class="lead fw-bold mb-0 me-3">
-                Signup
+                {{ transalteData.form_title}}
               </p>
             </div>
 
             <div data-mdb-input-init class="form-outline mb-4">
-              <label class="form-label" for="form3Example3">Name</label>
+              <label class="form-label" for="form3Example3">{{transalteData.inputs.name.lable  }}</label>
               <input type="text" id="form3Example3" formControlName="name" class="form-control form-control-lg"
-                placeholder="Enter a valid email address" />
+                [placeholder]="transalteData.inputs.name.placeholder" />
             </div>
 
             <!-- Email input -->
             <div data-mdb-input-init class="form-outline mb-4">
-              <label class="form-label" for="form3Example3">Email address</label>
-              <input type="email" id="form3Example3" formControlName="email" class="form-control form-control-lg"
-                placeholder="Enter a valid email address" />
+              <label class="form-label" for="form3Example6">{{transalteData.inputs.email.lable  }}</label>
+              <input type="email" id="form3Example6" formControlName="email" class="form-control form-control-lg"
+                [placeholder]="transalteData.inputs.email.placeholder" />
             </div>
 
             <!-- Password input -->
             <div data-mdb-input-init class="form-outline mb-3">
-              <label class="form-label" for="form3Example4">Password</label>
+              <label class="form-label" for="form3Example4">{{transalteData.inputs.password.lable  }}</label>
               <input type="password" id="form3Example4" formControlName="password" class="form-control form-control-lg"
-                placeholder="Enter password" />
+                [placeholder]="transalteData.inputs.password.placeholder" />
             </div>
 
             <div class="text-center text-lg-start mt-4 pt-2">
               <button type="button" type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg"
-                style="padding-left: 2.5rem; padding-right: 2.5rem;">Signup</button>
+                style="padding-left: 2.5rem; padding-right: 2.5rem;">
+                {{transalteData.button_lable                }}
+              </button>
               <p class="small fw-bold mt-2 pt-1 mb-0">you have an account?
                 <a [routerLink]="['/login']" routerLinkActive="router-link-active"
                   class="link-danger"> Login</a></p>

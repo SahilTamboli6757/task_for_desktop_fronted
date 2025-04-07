@@ -1,0 +1,8 @@
+<div class="d-flex flex-row-reverse bd-highlight">
+  <div>
+   <select class="form-select" aria-label="Default select example" (change)="onChange($event)">
+       <option selected value="en">Select language</option>
+       <option *ngFor="let item of langs" [value]="item.key">{{item.value}}</option>
+   </select>
+</div>
+</div>

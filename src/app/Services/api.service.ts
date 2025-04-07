@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment.development';
@@ -39,9 +39,9 @@ export class ApiService {
     }
   }
 
-  get(path: string) {
+  get(path: string, params: HttpParams = new HttpParams()) {
     return this.httpClient
-      .get(`${this.apiUrl}/${path}`, { headers: this.headers })
+      .get(`${this.apiUrl}/${path}`, { headers: this.headers, params: params })
       .pipe(
         map((response: any) => {
           return response;
