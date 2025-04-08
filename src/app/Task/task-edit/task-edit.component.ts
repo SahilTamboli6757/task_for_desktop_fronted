@@ -1,15 +1,18 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, effect, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { TaskService } from '../../Services/task.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgIf } from '@angular/common';
+import { TranslateService } from '../../Services/translate.service';
 
 @Component({
   selector: 'app-task-edit',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, NgIf],
   templateUrl: './task-edit.component.html',
   styleUrl: './task-edit.component.css',
 })
 export class TaskEditComponent implements OnInit {
+
   ediTTtaskForm!: FormGroup;
 
   route = inject(ActivatedRoute);
@@ -22,7 +25,34 @@ export class TaskEditComponent implements OnInit {
 
   taskService = inject(TaskService);
 
-  constructor() {}
+  transalteData: any;
+
+  constructor(private translateService: TranslateService) {
+
+      effect(() => {
+
+        const lang = this.translateService.currentLang();
+
+        this.fetchTranslation();
+      });
+    }
+
+    fetchTranslation() {
+
+      const lang = this.translateService.currentLang();
+
+      this.translateService.getTranslation(lang, 'edit-task').subscribe({
+        next: (response) => {
+
+          console.log(response);
+          this.transalteData = response.data;
+          // console.log(response);
+        },
+        error: (error) => {
+          console.log(error);
+        },
+      });
+    }
 
   ngOnInit(): void {
     this.taskId = +this.route.snapshot.params['id'];

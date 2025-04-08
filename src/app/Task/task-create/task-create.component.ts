@@ -1,40 +1,70 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, effect, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { TaskService } from '../../Services/task.service';
 import { Router } from '@angular/router';
+import { TranslateService } from '../../Services/translate.service';
+import { JsonPipe, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-task-create',
-  imports: [ ReactiveFormsModule],
+  imports: [ReactiveFormsModule, NgIf],
   templateUrl: './task-create.component.html',
   styleUrl: './task-create.component.css'
 })
-export class TaskCreateComponent implements OnInit  {
+export class TaskCreateComponent implements OnInit {
 
-taskForm!: FormGroup;
+  taskForm!: FormGroup;
 
-router = inject(Router);
+  router = inject(Router);
 
-fb = inject(FormBuilder)
+  fb = inject(FormBuilder)
 
-taskService = inject(TaskService);
+  taskService = inject(TaskService);
+  transalteData: any;
 
-ngOnInit(): void {
-  this.initForm();
-}
+  constructor(private translateService: TranslateService) {
 
-initForm() {
-  this.taskForm = this.fb.group({
-    title: [''],
-    description: [''],
-  });
-}
+    effect(() => {
 
-onSubmit() {
-  this.taskService.createTask(this.taskForm.value).subscribe(() => {
-    this.taskForm.reset();
-    this.router.navigate(['/']);
-  });
-}
+      const lang = this.translateService.currentLang();
+
+      this.fetchTranslation();
+    });
+  }
+
+  fetchTranslation() {
+
+    const lang = this.translateService.currentLang();
+
+    this.translateService.getTranslation(lang, 'create-task').subscribe({
+      next: (response) => {
+
+        console.log(response);
+        this.transalteData = response.data;
+        // console.log(response);
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
+  }
+
+  ngOnInit(): void {
+    this.initForm();
+  }
+
+  initForm() {
+    this.taskForm = this.fb.group({
+      title: [''],
+      description: [''],
+    });
+  }
+
+  onSubmit() {
+    this.taskService.createTask(this.taskForm.value).subscribe(() => {
+      this.taskForm.reset();
+      this.router.navigate(['/']);
+    });
+  }
 
 }

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { computed, Injectable, signal } from '@angular/core';
 import { ApiService } from './api.service';
 import { HttpParams } from '@angular/common/http';
 
@@ -6,6 +6,15 @@ import { HttpParams } from '@angular/common/http';
   providedIn: 'root'
 })
 export class TranslateService {
+
+  private _lang = signal(localStorage.getItem('lang') || 'en');
+
+  readonly currentLang = computed(() => this._lang());
+
+  setLang(lang: string) {
+    localStorage.setItem('lang', lang);
+    this._lang.set(lang);
+  }
 
   get currentLan(): string {
     return localStorage.getItem('lang') || 'en';

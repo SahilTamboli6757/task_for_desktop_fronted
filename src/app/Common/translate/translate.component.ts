@@ -22,9 +22,9 @@ export class TranslateComponent {
 
     localStorage.setItem('lang', selectedValue);
 
+    this.translateService.setLang(selectedValue);
+
     this.langChanged.emit(selectedValue);
-
-
   }
 
 }
