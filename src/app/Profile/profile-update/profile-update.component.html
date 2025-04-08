@@ -1,38 +1,51 @@
-<div class="card" style="width: 38rem">
+<div class="card" style="width: 38rem" *ngIf="transalteData">
   <div class="card-body">
-    <h5 class="card-title">Update Profile</h5>
+    <h5 class="card-title">
+      {{transalteData.form_title}}
+    </h5>
     <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
       <div class="mb-3">
-        <label for="title" class="form-label">Name</label>
+        <label for="title" class="form-label">
+          {{transalteData.inputs.name.label}}
+        </label>
         <input
           type="text"
           class="form-control"
-          id="title"
+          id="name"
           formControlName="name"
+          [placeholder]=" transalteData.inputs.name.placeholder"
         />
       </div>
 
       <div class="mb-3">
-        <label for="title" class="form-label">Email</label>
+        <label for="title" class="form-label">
+          {{transalteData.inputs.email.label}}
+        </label>
         <input
           type="text"
           class="form-control"
-          id="title"
+          id="email"
           formControlName="email"
+          [placeholder]=" transalteData.inputs.email.placeholder"
         />
       </div>
 
       <div class="mb-3">
-        <label for="title" class="form-label">Password</label>
+        <label for="title" class="form-label">
+          {{transalteData.inputs.password.label}}
+        </label>
         <input
           type="password"
           class="form-control"
-          id="title"
+          id="password"
           formControlName="password"
+          [placeholder]=" transalteData.inputs.password.placeholder"
         />
       </div>
 
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn-primary">
+        {{transalteData.button_label}}
+      </button>
     </form>
   </div>
 </div>

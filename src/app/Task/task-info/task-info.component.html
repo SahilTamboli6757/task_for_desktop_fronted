@@ -1,4 +1,4 @@
-<div class="card" style="width: 58rem" style="margin: 10px">
+<div class="card" style="width: 58rem" style="margin: 10px" *ngIf="transalteData">
   <div class="card-body">
     <h5 class="card-title">{{ task.title }}</h5>
     <p class="card-text">
@@ -6,15 +6,20 @@
     </p>
     <div class="d-flex flex-row-reverse bd-highlight">
       <div class="p-2 bd-highlight btn-sm">
-        <a (click)="delete()" class="btn btn-danger btn-sm"> Delete </a>
+        <a (click)="delete()" class="btn btn-danger btn-sm">
+
+          {{transalteData.buttons.delete_label}}
+        </a>
       </div>
       <div class="p-2 bd-highlight">
-        <a class="btn btn-info btn-sm" (click)="taskInfo()"> task info </a>
+        <a class="btn btn-info btn-sm" (click)="taskInfo()">
+          {{transalteData.buttons.task_info_label}}
+        </a>
       </div>
     </div>
     <hr>
     <span>
-      created by {{task.user?.name}}
+      {{transalteData.footer.text}} {{task.user?.name}}
     </span>
   </div>
 </div>

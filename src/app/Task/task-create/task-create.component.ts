@@ -20,6 +20,7 @@ export class TaskCreateComponent implements OnInit {
   fb = inject(FormBuilder)
 
   taskService = inject(TaskService);
+
   transalteData: any;
 
   constructor(private translateService: TranslateService) {

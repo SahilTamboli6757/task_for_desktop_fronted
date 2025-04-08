@@ -1,10 +1,12 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, effect, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TaskService } from '../../Services/task.service';
+import { TranslateService } from '../../Services/translate.service';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-task-show',
-  imports: [],
+  imports: [NgIf],
   templateUrl: './task-show.component.html',
   styleUrl: './task-show.component.css',
 })
@@ -19,7 +21,34 @@ export class TaskShowComponent implements OnInit {
 
   taskService = inject(TaskService);
 
-  constructor() {}
+  transalteData: any;
+
+  constructor(private translateService: TranslateService) {
+
+    effect(() => {
+
+      const lang = this.translateService.currentLang();
+
+      this.fetchTranslation();
+
+    });
+  }
+
+  fetchTranslation() {
+
+    const lang = this.translateService.currentLang();
+
+    this.translateService.getTranslation(lang, 'task-show').subscribe({
+      next: (response) => {
+
+        this.transalteData = response.data;
+        console.log(response.data);
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
+  }
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {

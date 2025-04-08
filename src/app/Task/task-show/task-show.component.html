@@ -1,13 +1,19 @@
-<div class="card" style="width: 65rem">
+<div class="card" style="width: 65rem" *ngIf="transalteData">
   <div class="card-body">
     <h5 class="card-title">{{ task.title }}</h5>
     <p class="card-text">
       {{ task.description }}
     </p>
     <div class="ms-5">
-      <a (click)="backtoHome()" class="btn btn-info btn-sm m-3">Back to Home</a>
-      <a (click)="edit()" class="btn btn-info btn-sm m-3">Edit</a>
-      <a (click)="delete()" class="btn btn-danger btn-sm">Delete</a>
+      <a (click)="backtoHome()" class="btn btn-info btn-sm m-3">
+        {{transalteData.buttons.back_label}}
+      </a>
+      <a (click)="edit()" class="btn btn-info btn-sm m-3">
+        {{transalteData.buttons.edit_label}}
+      </a>
+      <a (click)="delete()" class="btn btn-danger btn-sm">
+        {{transalteData.buttons.delete_label}}
+      </a>
     </div>
 
   </div>
