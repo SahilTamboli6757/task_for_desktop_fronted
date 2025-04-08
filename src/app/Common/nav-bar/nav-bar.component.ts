@@ -51,7 +51,6 @@ export class NavBarComponent {
       next: (response) => {
 
         this.transalteData = response.data;
-        // console.log(response);
       },
       error: (error) => {
         console.log(error);

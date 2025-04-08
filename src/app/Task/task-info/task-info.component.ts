@@ -37,7 +37,6 @@ export class TaskInfoComponent {
         next: (response) => {
 
           this.transalteData = response.data;
-          console.log(response.data);
         },
         error: (error) => {
           console.log(error);

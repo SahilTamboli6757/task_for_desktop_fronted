@@ -37,9 +37,7 @@ export class ProfileShowComponent implements OnInit {
 
       this.translateService.getTranslation(lang, 'view-profile').subscribe({
         next: (response) => {
-
           this.transalteData = response.data;
-          console.log(response.data);
         },
         error: (error) => {
           console.log(error);
@@ -56,7 +54,6 @@ export class ProfileShowComponent implements OnInit {
 
   viewProfile() {
     this.profileService.getProfile().subscribe((response: any) => {
-      // console.log(response);
       this.profileForm.patchValue(response.user);
     });
   }

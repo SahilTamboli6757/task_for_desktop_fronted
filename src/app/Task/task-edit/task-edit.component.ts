@@ -44,9 +44,7 @@ export class TaskEditComponent implements OnInit {
       this.translateService.getTranslation(lang, 'edit-task').subscribe({
         next: (response) => {
 
-          console.log(response);
           this.transalteData = response.data;
-          // console.log(response);
         },
         error: (error) => {
           console.log(error);
@@ -76,7 +74,6 @@ export class TaskEditComponent implements OnInit {
       .subscribe((data) => {
         this.router.navigate(['/']);
       });
-    // console.log(this.ediTTtaskForm.value);
   }
 
   initForm() {

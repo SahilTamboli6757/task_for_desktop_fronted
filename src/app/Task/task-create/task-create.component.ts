@@ -39,10 +39,7 @@ export class TaskCreateComponent implements OnInit {
 
     this.translateService.getTranslation(lang, 'create-task').subscribe({
       next: (response) => {
-
-        console.log(response);
         this.transalteData = response.data;
-        // console.log(response);
       },
       error: (error) => {
         console.log(error);

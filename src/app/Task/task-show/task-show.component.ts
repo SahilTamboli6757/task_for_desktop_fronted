@@ -42,7 +42,6 @@ export class TaskShowComponent implements OnInit {
       next: (response) => {
 
         this.transalteData = response.data;
-        console.log(response.data);
       },
       error: (error) => {
         console.log(error);
@@ -60,7 +59,6 @@ export class TaskShowComponent implements OnInit {
 
   fetchTaskInfo() {
     this.taskService.getTask(this.taskId).subscribe((data) => {
-      // console.log(data);
       this.task = data.task;
     });
   }

@@ -72,7 +72,6 @@ export class SignupComponent implements OnInit {
       next: (response) => {
 
         this.transalteData = response.data;
-        // console.log(response);
       },
       error: (error) => {
         console.log(error);
