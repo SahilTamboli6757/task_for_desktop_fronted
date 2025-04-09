@@ -1,6 +1,6 @@
 {
   "name": "task-frontend",
-  "version": "0.0.0",
+  "version": "1.0.1",
   "main": "main.js",
   "author": "Sahil",
   "description": "This project was generated with Angular CLI version 19.1.6.",
@@ -12,7 +12,8 @@
     "test": "ng test",
     "serve:ssr:soca14": "node dist/soca14/server/main.js",
     "electron": "ng build --base-href ./ && electron .",
-    "dist": "ng build --base-href ./ && electron-builder"
+    "dist": "ng build --base-href ./ && npx @electron/packager ./dist TaskManager --platform=win32 --arch=x64",
+    "packager:win": "npx @electron/packager . TaskManager --platform=win32 --arch=x64"
   },
   "private": true,
   "dependencies": {
@@ -24,6 +25,7 @@
     "@angular/platform-browser": "^19.1.0",
     "@angular/platform-browser-dynamic": "^19.1.0",
     "@angular/router": "^19.1.0",
+    "@electron/packager": "^18.3.6",
     "@ng-bootstrap/ng-bootstrap": "^18.0.0",
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3",
@@ -50,8 +52,18 @@
   "build": {
     "appId": "com.sahil.task",
     "productName": "Task",
+    "win": {
+      "icon": "dist/task_frontend/browser/favicon.ico",
+      "target": [
+        "nsis"
+      ]
+    },
     "mac": {
-      "category": "public.app-category.developer-tools"
+      "category": "public.app-category.developer-tools",
+      "icon": "dist/task_frontend/browser/favicon.icns"
+    },
+    "linux": {
+      "icon": "dist/task_frontend/browser/favicon.png"
     },
     "files": [
       "**/*",

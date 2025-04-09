@@ -11,13 +11,7 @@ function createWindow () {
       nodeIntegration: true
     }
   })
-  // mainWindow.loadURL(
-  //   // url.format({
-  //   //   pathname: path.join(__dirname, `dist/task_frontend/browser/index.html`),
-  //   //   protocol: "file:",
-  //   //   slashes: true
-  //   // })
-  // );
+
 
   mainWindow.loadFile('dist/task_frontend/browser/index.html');
 
